@@ -134,12 +134,12 @@ def send_status(message):
         log("Platform:", platform)
         log(" * status:", status)
 
-    if status is None:
-        status = "on line"
+        if status is None:
+            status = "on line"
     
-    msg = 'Current status is: ' + status
-    log(msg)
-    bot.reply_to(message, msg)
+        msg = f'Current status is {status} for {platform}.'
+        log(msg)
+        bot.reply_to(message, msg)
 
 
 if __name__ == '__main__':
