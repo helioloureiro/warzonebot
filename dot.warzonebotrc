@@ -1,0 +1,4 @@
+# just an example of .warzonebotrc
+# Create yours and add it to .gitignore
+[TELEGRAM]
+TOKEN = key-aadfaba-adfasdfadfafaa
