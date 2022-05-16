@@ -62,13 +62,13 @@ bot = telebot.TeleBot(token)
 def startBot():
     global bot
     print("Starting WarzoneBot")
+    print(redMsg('That\'s gas you don\'t wanna brief'))
 
-    while True:
-        try:
-            bot.infinity_polling()
-        except KeyboardInterrupt:
-            bot.stop_polling()
-            sys.exit(0)
+    try:
+        bot.infinity_polling()
+    except KeyboardInterrupt:
+        bot.stop_polling()
+        sys.exit(0)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -119,7 +119,10 @@ def send_status(message):
     print(message)
     dataJson = GetStatusJson()
     data = json.loads(dataJson)
-    print(json.dumps(data, indent=4))
+    if 'serverStatuses' in data:
+        print(json.dumps(data['serverStatuses'], indent=4))
+    else:
+        print(json.dumps(data, indent=4))
     current_time = data['updatedTime']
     log(f"Report time: {current_time}")
 
@@ -129,24 +132,26 @@ def send_status(message):
         if service['gameTitle'] != 'Call of Duty: Warzone':
             continue
         print(service)
+
         platform = service['platform']
-        platform.lower()
         status = service['status']
-        status.lower()
-        log("Platform:", platform)
-        log(" * status:", status)
+
+        log("Platform:", platform, type(platform))
+        if platform is not None: 
+            platform.lower()
+        log(" * status:", status, type(status))
+        if status is not None: 
+            status.lower()
 
         if status is None:
             status = "on line"
     
         status_log = status
-        status_tlg = status
         if status == "on line":
             status_log =  greenMsg(status)
-            status_tlg = f'<font color="green">{status}</font>'
         msg = f'Current status is {status_log} for {platform}.'
         log(msg)
-        msg = f'Current status is {status_tlg} for {platform}.'
+        msg = f'Current status is {status} for {platform}.'
         bot.reply_to(message, msg)
 
 
