@@ -11,7 +11,6 @@ Restart=always
 RestartSec=10
 
 Type=forking
-WorkingDirectory=/usr/local/warzonebot/sources/
 ExecStart=/usr/local/warzonebot/run
 ExecReload=/usr/local/warzonebot/kill
 
