@@ -1,0 +1,20 @@
+[Unit]
+Description=Warzone Status Bot Telegram Daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=warzonebot
+Group=telegram-bots
+WorkingDirectory=/usr/local/warzonebot
+Restart=always
+RestartSec=10
+
+Type=forking
+WorkingDirectory=/usr/local/warzonebot/sources/
+ExecStart=/usr/local/warzonebot/run
+ExecReload=/usr/local/warzonebot/kill
+
+[Install]
+WantedBy=multi-user.target
+
