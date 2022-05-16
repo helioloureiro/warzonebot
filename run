@@ -11,7 +11,7 @@ if [ ! -z "$PID" ]; then
     exit 1
 fi
 
-if [ ! -x $DIR/bin/activate ]; then
+if [ ! -f $DIR/bin/activate ]; then
   echo "ERROR: install virtualenv into the current directory"
   exit 1
 fi
