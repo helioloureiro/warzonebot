@@ -1,4 +1,4 @@
-# just an example of .warzonebotrc
+# just an example of .config/warzonebot/config
 # Create yours and add it to .gitignore
 [TELEGRAM]
 TOKEN = key-aadfaba-adfasdfadfafaa

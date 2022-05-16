@@ -5,7 +5,8 @@ import os
 
 ## Static constants
 HOMEDIR = os.environ.get('HOME')
-CONFIGFILE = f'{HOMEDIR}/.warzonebotrc'
+# mv ~/.warzonebotrc ~/.config/warzonebot/config
+CONFIGFILE = f'{HOMEDIR}/.config/warzonebot/config'
 STATUSDATA = 'https://support.activision.com/services/apexrest/web/oshp/landingpage/'
 
 import sys, re, time
