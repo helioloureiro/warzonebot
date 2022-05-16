@@ -139,10 +139,10 @@ def send_status(message):
 
         log("Platform:", platform, type(platform))
         if platform is not None: 
-            platform.lower()
+            platform = platform.lower()
         log(" * status:", status, type(status))
         if status is not None: 
-            status.lower()
+            status = status.lower()
 
         if status is None:
             status = "on line"
