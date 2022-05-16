@@ -130,15 +130,23 @@ def send_status(message):
             continue
         print(service)
         platform = service['platform']
+        platform.lower()
         status = service['status']
+        status.lower()
         log("Platform:", platform)
         log(" * status:", status)
 
         if status is None:
             status = "on line"
     
-        msg = f'Current status is {status} for {platform}.'
+        status_log = status
+        status_tlg = status
+        if status == "on line":
+            status_log =  greenMsg(status)
+            status_tlg = f'<font color="green">{status}</font>'
+        msg = f'Current status is {status_log} for {platform}.'
         log(msg)
+        msg = f'Current status is {status_tlg} for {platform}.'
         bot.reply_to(message, msg)
 
 
